@@ -1,7 +1,0 @@
-spring:
-  datasource:
-    url:"jdbc:postgresql://localhost/sweater
-    username:postgres
-    password:123
-  jpa:
-    generate-ddl:true

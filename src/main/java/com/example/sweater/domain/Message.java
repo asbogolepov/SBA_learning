@@ -13,6 +13,15 @@ public class Message {
     private String text;
     private String tag;
 
+    public Message() {
+    }
+
+    public Message(String text, String tag) {
+        this.text = text;
+        this.tag = tag;
+    }
+
+
     public Integer getId() {
         return id;
     }
@@ -21,8 +30,7 @@ public class Message {
         return text;
     }
 
-    public String getTag() {
-        return tag;
+    public String getTag() { return tag;
     }
 
     public void setId(Integer id) {
