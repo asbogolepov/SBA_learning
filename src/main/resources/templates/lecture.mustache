@@ -5,6 +5,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<div>Lecture text</div>
+<form action="/lecture" method="post">
+    <div><label> Lecture Name : <input type="text" name="lectureName"/> </label></div>
+    <div><label> Lecture Content: <input type="text" name="lectureContent"/> </label></div>
+    <input type="hidden" name="_csrf" value="{{ _csrf.token }}"/>
+    <div><input type="submit" value="Add Lecture"/></div>
+</form>
+{{#lectures}}
+      <div>
+          <b>{{id}}</b>`
+          <span>{{lectureName}}</span>
+          <i>{{lectureContent}}</i>
+      </div>
+{{/lectures}}
 </body>
 </html>

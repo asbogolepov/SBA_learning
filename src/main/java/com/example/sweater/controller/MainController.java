@@ -58,9 +58,4 @@ public class MainController {
         return "main";
     }
 
-    @GetMapping("/lecture")
-    public String registration(){
-        return "lecture";
-    }
-
 }

@@ -1,0 +1,12 @@
+version: "2.1"
+
+services:
+  pgadmin-local:
+    image: dpage/pgadmin4:4
+    container_name: pgadmin-local
+    environment:
+    - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+    - PGADMIN_DEFAULT_PASSWORD=admin
+    restart: always
+    network_mode: host
+
