@@ -5,12 +5,28 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+
+
+<a href="/test">Take a test</a>
+
+{{#lectures}}
+      <div>
+          <b><a name="{{lectureTechName}}"></a>{{lectureName}}<br></b>
+          <i>{{lectureContent}}<br><br></i>
+      </div>
+{{/lectures}}
+<div>
+<b>Adding lectures</b>
+</div>
 <form action="/lecture" method="post">
     <div><label> Lecture Name : <input type="text" name="lectureName"/> </label></div>
     <div><label> Lecture Content: <input type="text" name="lectureContent"/> </label></div>
     <input type="hidden" name="_csrf" value="{{ _csrf.token }}"/>
     <div><input type="submit" value="Add Lecture"/></div>
 </form>
+
+<a href="#lecture 2">Лекция 4</a>
+
 {{#lectures}}
       <div>
           <b>{{lectureName}}</b>
