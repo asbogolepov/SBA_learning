@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Take a test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div>
+<b>Adding questions</b>
+</div>
+<form action="/add-questions" method="post">
+    <div><label> Question Name : <input type="text" name="questionName"/> </label></div>
+    <div><label> Option One: <input type="text" name="optionOne"/> </label></div>
+    <input type="hidden" name="_csrf" value="{{ _csrf.token }}"/>
+    <div><input type="submit" value="Add Question"/></div>
+</form>
+</body>
+</html>
