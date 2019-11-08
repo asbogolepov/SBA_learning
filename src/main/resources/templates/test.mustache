@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Take a test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div>
+<b>Adding lectures</b>
+</div>
+<form action="/test" method="post">
+    <div><label> Lecture Name : <input type="radio" name="answer1" value="answer-content"> Answer-content<br> </label></div>
+    <input type="hidden" name="_csrf" value="{{ _csrf.token }}"/>
+    <div><input type="submit" value="Answer"/></div>
+    {{#mistakes}}
+    
+    {{/mistakes}}
+</form>
+</body>
+</html>
