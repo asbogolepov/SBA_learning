@@ -24,6 +24,16 @@
     <input type="hidden" name="_csrf" value="{{ _csrf.token }}"/>
     <div><input type="submit" value="Add Lecture"/></div>
 </form>
+
 <a href="#lecture 2">Лекция 4</a>
+
+{{#lectures}}
+      <div>
+          <b>{{lectureName}}</b>
+          <i>{{lectureContent}}</i>
+      </div>
+{{/lectures}}
+
+<div><a href="/">To the beginning</a></div>
 </body>
 </html>
