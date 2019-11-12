@@ -15,17 +15,17 @@ public class Question {
     private String optionTwo;
     private String optionThree;
     private String optionFour;
-    private Lecture lecture;
+    private int lectureId;
     private String rightAnswer;
 
-    public Question(String questionName, String optionOne, String optionTwo, String optionThree, String optionFour, Lecture lecture, String rightAnswer) {
+    public Question(String questionName, String optionOne, String optionTwo, String optionThree, String optionFour, int lectureId, String rightAnswer) {
         this.id = id;
         this.questionName = questionName;
         this.optionOne = optionOne;
         this.optionTwo = optionTwo;
         this.optionThree = optionThree;
         this.optionFour = optionFour;
-        this.lecture = lecture;
+        this.lectureId = lectureId;
         this.rightAnswer = rightAnswer;
     }
 
@@ -85,11 +85,20 @@ public class Question {
         this.optionFour = optionFour;
     }
 
-    public Lecture getLecture() {
-        return lecture;
+    public int getLectureId() {
+        return lectureId;
     }
 
-    public void setLecture(Lecture lecture) {
-        this.lecture = lecture;
+    public void setLectureId(int lectureId) {
+        this.lectureId = lectureId;
     }
+
+    public String getRightAnswer() {
+        return rightAnswer;
+    }
+
+    public void setRightAnswer(String rightAnswer) {
+        this.rightAnswer = rightAnswer;
+    }
+
 }

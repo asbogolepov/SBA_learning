@@ -23,11 +23,11 @@ public class TestController {
     @Autowired
     private AnswerRepo answerRepo;
 
-    @GetMapping("/test")
-    public String question(Map<String, Object> model){
-        Iterable<Question> questions = questionRepo.findAll();
-        model.put("questions", questions);
-        return "test";
+    @GetMapping("/add-questions")
+    public String showQuestions(Map<String, Object> model){
+        Iterable<Question> lectures = questionRepo.findAll();
+        model.put("questions", lectures);
+        return "add-questions";
     }
 
     @PostMapping("/add-questions")
@@ -38,9 +38,9 @@ public class TestController {
             @RequestParam String optionTwo,
             @RequestParam String optionThree,
             @RequestParam String optionFour,
-            @RequestParam Lecture lecture,
+            @RequestParam int lectureId,
             @RequestParam String rightAnswer, Map<String, Object> model) {
-        Question question = new Question(questionName, optionOne, optionTwo, optionThree, optionFour, lecture, rightAnswer);
+        Question question = new Question(questionName, optionOne, optionTwo, optionThree, optionFour, lectureId, rightAnswer);
         questionRepo.save(question);
 
         Iterable<Question> questions = questionRepo.findAll();
@@ -49,12 +49,20 @@ public class TestController {
         return "add-questions";
     }
 
+    @GetMapping("/test")
+    public String question(Map<String, Object> model){
+        Iterable<Question> questions = questionRepo.findAll();
+        model.put("questions", questions);
+        return "test";
+    }
+
     @PostMapping("/test")
     public String makeAnswer(
             @AuthenticationPrincipal User user,
-            @RequestParam Question question,
+            @RequestParam int questionId,
+            @RequestParam String answerName,
             @RequestParam String selectedOption,  Map<String, Object> model) {
-        Answer answer = new Answer(question, selectedOption);
+        Answer answer = new Answer(questionId, answerName, selectedOption);
         answerRepo.save(answer);
         Iterable<Answer> answers = answerRepo.findAll();
         model.put("answers", answers);
