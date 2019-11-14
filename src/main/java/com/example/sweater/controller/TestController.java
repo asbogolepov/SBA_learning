@@ -25,8 +25,8 @@ public class TestController {
 
     @GetMapping("/add-questions")
     public String showQuestions(Map<String, Object> model){
-        Iterable<Question> lectures = questionRepo.findAll();
-        model.put("questions", lectures);
+        Iterable<Question> questions = questionRepo.findAll();
+        model.put("questions", questions);
         return "add-questions";
     }
 
@@ -52,17 +52,20 @@ public class TestController {
     @GetMapping("/test")
     public String question(Map<String, Object> model){
         Iterable<Question> questions = questionRepo.findAll();
+        Iterable<Answer> answers = answerRepo.findAll();
         model.put("questions", questions);
+        model.put("answers", answers);
         return "test";
     }
 
     @PostMapping("/test")
     public String makeAnswer(
             @AuthenticationPrincipal User user,
-            @RequestParam int questionId,
-            @RequestParam String answerName,
             @RequestParam String selectedOption,  Map<String, Object> model) {
-        Answer answer = new Answer(questionId, answerName, selectedOption);
+        Question question = new Question();
+        Answer answer = new Answer(question.getId(), selectedOption);
+        answer.setSelectedOption(selectedOption);
+        question.compareAnswer(answer.getSelectedOption());
         answerRepo.save(answer);
         Iterable<Answer> answers = answerRepo.findAll();
         model.put("answers", answers);

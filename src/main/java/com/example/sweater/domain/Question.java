@@ -9,7 +9,7 @@ public class Question {
     }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
     private String questionName;
     private String optionOne;
     private String optionTwo;
@@ -29,19 +29,19 @@ public class Question {
         this.rightAnswer = rightAnswer;
     }
 
-    public boolean compareAnswer(Question question, String selectedOption) {
+    public boolean compareAnswer(String selectedOption) {
         boolean isRight = false;
-        if (question.rightAnswer.equals(selectedOption)) {
+        if (rightAnswer.equals(selectedOption)) {
             isRight = true;
         }
         return isRight;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

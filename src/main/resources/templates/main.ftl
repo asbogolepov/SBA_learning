@@ -1,17 +1,15 @@
-<html>
+<#import "parts/common.ftl" as c>
+<#import "parts/login.ftl" as l>
 
-<body>
+<@c.page>
     <div>
-        <form action="/logout" method="post">
-            <input type="hidden" name="_csrf" value="{{ _csrf.token }}"/>
-            <input type="submit" value="Sign Out"/>
-        </form>
+        <@l.logout />
     </div>
     <div>
         <form method="post" action="main">
             <input type="text" name="text" placeholder="Enter the message">
             <input type="text" name="tag" placeholder="Tag">
-            <input type="hidden" name="_csrf" value="{{ _csrf.token }}"/>
+            <input type="hidden" name="_csrf" value="${ _csrf.token }"/>
             <button type="submit">Add</button>
         </form>
     </div>
@@ -21,14 +19,15 @@
         <input type="hidden" name="_csrf" value="{{ _csrf.token }}"/>
         <button type="submit">Find</button>
     </form>
-    {{#messages}}
-      <div>
-          <b>{{id}}</b>`
-          <span>{{text}}</span>
-          <i>{{tag}}</i>
-          <strong>{{authorName}}</strong>
-      </div>
-    {{/messages}}
+    <#list messages as message>
+    <div>
+        <b>${message.id}</b>`
+        <span>${message.text}</span>
+        <i>${message.tag}</i>
+        <strong>${message.authorName}</strong>
+    </div>
+        <#else>
+        No messages
+    </#list>
 
-</body>
-</html>
+</@c.page>

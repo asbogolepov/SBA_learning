@@ -12,15 +12,13 @@
 {{#questions}}
      <form action="/test" method="post">
          <b>{{questionName}}</b>
-         <div><label> <input type="radio" name="answerName" value="{{optionOne}}"> {{optionOne}}<br> </label></div>
-         <div><label> <input type="radio" name="answerName" value="{{optionTwo}}"> {{optionTwo}}<br> </label></div>
-         <div><label> <input type="radio" name="answerName" value="{{optionThree}}"> {{optionThree}}<br> </label></div>
-         <div><label> <input type="radio" name="answerName" value="{{optionFour}}"> {{optionFour}}<br> </label></div>
+         <div><label> <input type="radio" name="selectedOption" value="{{optionOne}}"> {{optionOne}}<br> </label></div>
+         <div><label> <input type="radio" name="selectedOption" value="{{optionTwo}}"> {{optionTwo}}<br> </label></div>
+         <div><label> <input type="radio" name="selectedOption" value="{{optionThree}}"> {{optionThree}}<br> </label></div>
+         <div><label> <input type="radio" name="selectedOption" value="{{optionFour}}"> {{optionFour}}<br> </label></div>
          <input type="hidden" name="_csrf" value="{{ _csrf.token }}"/>
          <div><input type="submit" value="Answer"/></div>
-         {{#mistakes}}
 
-         {{/mistakes}}
      </form>
 {{/questions}}
 

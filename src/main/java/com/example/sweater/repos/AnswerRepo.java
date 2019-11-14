@@ -5,5 +5,5 @@ import com.example.sweater.domain.Lecture;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AnswerRepo extends JpaRepository<Answer, Long> {
-    Answer findByAnswerName(String answerName);
+    Answer findById(int id);
 }

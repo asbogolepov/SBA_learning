@@ -1,10 +1,6 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Take a test</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
+<#import "parts/common.ftl" as c>
+
+<@c.page>
 
 <div>
 <b>Adding questions</b>
@@ -20,5 +16,4 @@
     <input type="hidden" name="_csrf" value="{{ _csrf.token }}"/>
     <div><input type="submit" value="Add Question"/></div>
 </form>
-</body>
-</html>
+</@c.page>
