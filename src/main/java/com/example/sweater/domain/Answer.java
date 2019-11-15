@@ -12,13 +12,14 @@ public class Answer {
     private Long id;
     private Long questionId;
     private String selectedOption;
+    private boolean isRight;
 
 
-
-    public Answer(Long questionId,String selectedOption) {
+    public Answer(Long questionId,String selectedOption, boolean isRight) {
         this.id = id;
         this.questionId = questionId;
         this.selectedOption = selectedOption;
+        this.isRight = isRight;
     }
 
 
@@ -42,4 +43,11 @@ public class Answer {
         this.questionId = questionId;
     }
 
+    public boolean isRight() {
+        return isRight;
+    }
+
+    public void setRight(boolean right) {
+        isRight = right;
+    }
 }

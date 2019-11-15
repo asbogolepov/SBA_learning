@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AnswerRepo extends JpaRepository<Answer, Long> {
     Answer findById(int id);
+    Answer findByQuestionId(Long id);
 }

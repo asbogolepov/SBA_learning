@@ -73,8 +73,12 @@ public class TestController {
             @RequestParam("questionId") Question question, Map<String, Object> model
             ) {
         Iterable<Question> questions = questionRepo.findAll();
+        Iterable<Answer> answers = answerRepo.findAll();
         boolean isRight = Question.compareAnswer(question, selectedOption);
+        Answer answer = new Answer(question.getId(), selectedOption, isRight);
         model.put("questions", questions);
+        model.put("answers", answers);
+        answerRepo.save(answer);
         return "test";
     }
 
