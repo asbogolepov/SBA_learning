@@ -9,13 +9,13 @@ public class Answer {
     }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private int questionId;
+    private Long id;
+    private Long questionId;
     private String selectedOption;
 
 
 
-    public Answer(int questionId,String selectedOption) {
+    public Answer(Long questionId,String selectedOption) {
         this.id = id;
         this.questionId = questionId;
         this.selectedOption = selectedOption;
@@ -30,19 +30,15 @@ public class Answer {
         this.selectedOption = selectedOption;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getQuestionId() {
+    public Long getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(int questionId) {
+    public void setQuestionId(Long questionId) {
         this.questionId = questionId;
     }
 

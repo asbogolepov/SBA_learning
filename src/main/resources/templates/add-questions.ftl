@@ -13,7 +13,7 @@
     <div><label> Option Four: <input type="text" name="optionFour"/> </label></div>
     <div><label> Lecture Id: <input type="text" name="lectureId"/> </label></div>
     <div><label> Right Answer: <input type="text" name="rightAnswer"/> </label></div>
-    <input type="hidden" name="_csrf" value="{{ _csrf.token }}"/>
+    <input type="hidden" name="_csrf" value="${ _csrf.token }"/>
     <div><input type="submit" value="Add Question"/></div>
 </form>
 </@c.page>

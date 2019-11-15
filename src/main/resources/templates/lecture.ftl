@@ -16,7 +16,7 @@
     <form action="/lecture" method="post">
         <div><label> Lecture Name : <input type="text" name="lectureName"/> </label></div>
         <div><label> Lecture Content: <input type="text" name="lectureContent"/> </label></div>
-        <input type="hidden" name="_csrf" value="{{ _csrf.token }}"/>
+        <input type="hidden" name="_csrf" value="${ _csrf.token }"/>
         <div><input type="submit" value="Add Lecture"/></div>
     </form>
 
