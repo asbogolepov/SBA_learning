@@ -15,10 +15,10 @@ public class Question {
     private String optionTwo;
     private String optionThree;
     private String optionFour;
-    private int lectureId;
+    private Long lectureId;
     private String rightAnswer;
 
-    public Question(String questionName, String optionOne, String optionTwo, String optionThree, String optionFour, int lectureId, String rightAnswer) {
+    public Question(String questionName, String optionOne, String optionTwo, String optionThree, String optionFour, Long lectureId, String rightAnswer) {
         this.questionName = questionName;
         this.optionOne = optionOne;
         this.optionTwo = optionTwo;
@@ -28,9 +28,9 @@ public class Question {
         this.rightAnswer = rightAnswer;
     }
 
-    public static boolean compareAnswer(Question question, String selectedOption) {
+    public boolean compareAnswer( String selectedOption) {
         boolean isRight = false;
-        if (question.rightAnswer.equals(selectedOption)) {
+        if (rightAnswer.equals(selectedOption)) {
             isRight = true;
         }
         return isRight;
@@ -80,11 +80,11 @@ public class Question {
         this.optionFour = optionFour;
     }
 
-    public int getLectureId() {
+    public Long getLectureId() {
         return lectureId;
     }
 
-    public void setLectureId(int lectureId) {
+    public void setLectureId(Long lectureId) {
         this.lectureId = lectureId;
     }
 

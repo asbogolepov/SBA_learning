@@ -5,7 +5,7 @@
 
     <#list lectures as lecture>
         <div>
-            <b><a name="${lecture.lectureTechName}"></a>${lecture.lectureName}<br></b>
+            <b><a name="${lecture.id}"></a>${lecture.lectureName}<br></b>
             <i>${lecture.lectureContent}<br><br></i>
         </div>
     </#list>

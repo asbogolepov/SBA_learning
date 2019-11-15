@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LectureRepo extends JpaRepository<Lecture, Long> {
     Lecture findByLectureName(String lectureName);
+    Lecture getOne(Long Id);
 }

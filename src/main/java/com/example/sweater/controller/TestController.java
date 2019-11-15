@@ -2,6 +2,7 @@ package com.example.sweater.controller;
 
 import com.example.sweater.domain.*;
 import com.example.sweater.repos.AnswerRepo;
+import com.example.sweater.repos.LectureRepo;
 import com.example.sweater.repos.QuestionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -10,11 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Controller
 public class TestController {
@@ -23,6 +21,9 @@ public class TestController {
     private QuestionRepo questionRepo;
     @Autowired
     private AnswerRepo answerRepo;
+
+    @Autowired
+    private LectureRepo lectureRepo;
 
     @GetMapping("/add-questions")
     public String showQuestions(Map<String, Object> model){
@@ -39,7 +40,7 @@ public class TestController {
             @RequestParam String optionTwo,
             @RequestParam String optionThree,
             @RequestParam String optionFour,
-            @RequestParam int lectureId,
+            @RequestParam Long lectureId,
             @RequestParam String rightAnswer, Map<String, Object> model) {
         Question question = new Question(questionName, optionOne, optionTwo, optionThree, optionFour, lectureId, rightAnswer);
         questionRepo.save(question);
@@ -59,36 +60,26 @@ public class TestController {
         return "test";
     }
 
-//    @GetMapping("/test")
-//    public String question(@PathVariable Question question, Model model){
-//        model.addAttribute("question", question);
-//        return "test";
-//    }
-
     @PostMapping("/test")
     public String makeAnswer(
-            @RequestParam Map<String, String> form,
             @RequestParam String selectedOption,
-
-            @RequestParam("questionId") Question question, Map<String, Object> model
+            @RequestParam("questionId") Question question,
+            Map<String, Object> model
             ) {
+
         Iterable<Question> questions = questionRepo.findAll();
         Iterable<Answer> answers = answerRepo.findAll();
-        boolean isRight = Question.compareAnswer(question, selectedOption);
+        boolean isRight = question.compareAnswer(selectedOption);
         Answer answer = new Answer(question.getId(), selectedOption, isRight);
+        answer.setRight(question.compareAnswer(selectedOption ));
+        Lecture lecture = lectureRepo.getOne(question.getLectureId());
         model.put("questions", questions);
         model.put("answers", answers);
+        model.put("answer", answer);
+        model.put("lecture", lecture);
         answerRepo.save(answer);
         return "test";
     }
 
-//    @PostMapping("/test")
-//    public String makeAnswer(@RequestParam("questionId") Question question, @RequestParam String selectedOption, Model model, @RequestParam("questionId") Answer answer) {
-//        answer.setSelectedOption(selectedOption);
-//        boolean isRight = question.compareAnswer(answer);
-//        Iterable<Answer> answers = answerRepo.findAll();
-//        model.addAttribute("answers", answers);
-//        return "test";
-//    }
 }
 
