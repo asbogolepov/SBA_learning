@@ -1,0 +1,16 @@
+spring:
+    datasource:
+        password: 123
+        url: jdbc:postgresql://localhost/sweater
+        username: postgres
+    freemarker:
+        expose-requtmest-attributes: true
+    jpa:
+        generate-ddl: true
+        properties:
+            hibernate:
+                jdbc:
+                    lob:
+                        non_contextual_creation: true
+upload:
+    path: /home/anton/IdeaProjects/SBA_learning/uploads
