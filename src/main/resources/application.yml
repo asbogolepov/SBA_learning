@@ -1,4 +1,11 @@
 spring:
+    mail:
+        host: smtp.yandex.ru
+        username:
+        password:
+        port: 465
+        protocol: smtps
+
     datasource:
         password: 123
         url: jdbc:postgresql://localhost/sweater
@@ -14,3 +21,5 @@ spring:
                         non_contextual_creation: true
 upload:
     path: /home/anton/IdeaProjects/SBA_learning/uploads
+mail:
+    debug: true
